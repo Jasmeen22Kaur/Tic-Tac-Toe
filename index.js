@@ -16,12 +16,12 @@ const winningPositions = [
     [2,4,6]
 ]
 
-// lets create a function to initailize the game
+// function to initailize the game
 function initGame(){
     currentPlayer = "X";
     gameGrid = ["","","","","","","","",""];
 
-    //UI par empty bhi karna hai
+    // displaying empty boxes
     boxes.forEach((box, index) => {
         box.innerText = "";
         boxes[index].style.pointerEvents = "all";
@@ -56,7 +56,7 @@ function checkGameOver(){
         if((gameGrid[position[0]] !== "" || gameGrid[position[1]] !== "" || gameGrid[position[2]] !== "")
             && (gameGrid[position[0]] === gameGrid[position[1]]) && (gameGrid[position[1]] === gameGrid[position[2]])){
 
-                // check if winner is X
+                // check if winner is X or not
                 if(gameGrid[position[0]] === "X")
                     ans = "X";
                 else
@@ -74,7 +74,7 @@ function checkGameOver(){
             }
     });
 
-    // Got a WINNER
+    // Get the WINNER
     if(ans !== ""){
         gameInfo.innerText = `Winner Player - ${ans}`;
         newGameBtn.classList.add("active");
@@ -113,5 +113,6 @@ boxes.forEach((box, index) =>{
         handleClick(index);
     })
 });
+
 
 newGameBtn.addEventListener("click", initGame);
